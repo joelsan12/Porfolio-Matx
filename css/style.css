@@ -1,4 +1,4 @@
-body, html {
+body.home-page {
     font-family: 'Courier New', Courier, monospace;
     height: 100vh;
     margin: 0;
@@ -66,4 +66,42 @@ h1 {
     .btn-contac {
         width: 100%;
     }
+}
+
+.profile-page {
+
+    background-color: rgb(7, 7, 48);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    margin: 0;
+    
+}
+
+.perfil {
+    max-width: 600px;
+    margin: 70px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+/* Estilo para la sección de habilidades */
+.skills {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 1.6; 
+}
+
+/* Estilo para la lista de habilidades */
+.listaflex {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
 }
