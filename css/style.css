@@ -1,48 +1,59 @@
+/* 🌌 Estilo general */
 body.home-page {
     font-family: 'Courier New', Courier, monospace;
     height: 100vh;
     margin: 0;
     background-image: url('/img/astronau.gif');
     background-size: cover;
-    background-position: left center;  /* Fondo hacia la izquierda */
+    background-position: center; 
     background-repeat: no-repeat;
     background-attachment: fixed;
     display: flex;
-    justify-content: center; /* manda el contenido a la derecha */
-    align-items: center;       /* centra verticalmente */
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 5%;
+   
 }
 
-/* Caja de contenido */
+/* 📦 Caja de contenido */
 .data {
     color: white;
     text-shadow: 2px 2px 4px #000000;
-    max-width: 600px;
-    padding: 30px;
+    max-width: 800px;
+    width: 100%; /* Usa el 90% del ancho del viewport */
+    padding: 60px;
     font-size: 18px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    margin-left: 600px; /* mueve la caja a la derecha */
+    background: rgba(0, 0, 0, 0.45);
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    box-sizing: border-box; /* Asegura que el padding no rompa el width: 90% */
+    /*margin-left: 600px;
+    margin-right: 0;*/
+    margin: auto;
 }
 
-/* Animación */
+/* ✨ Título animado */
 h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
     animation: move-text 3s infinite ease-in-out;
 }
 
 @keyframes move-text {
-    50% { transform: translateY(-20px); }
+    50% { transform: translateY(-10px); }
 }
 
-/* Botón */
+/* 🔘 Botón */
 .btn-contac {
     text-decoration: none;
     color: white;
     border: 1px solid white;
-    padding: 10px 20px;
+    padding: 10px 25px;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 25px;
     display: inline-block;
-    transition: .5s;
+    transition: 0.4s;
+    
 }
 
 .btn-contac:hover {
@@ -50,21 +61,59 @@ h1 {
     color: black;
 }
 
-/* 🔹 En pantallas pequeñas SIN GIF, fondo azul */
-@media (max-width: 768px) {
-    body, html {
-        background-image: none;
-        background-color: rgb(6, 6, 59);
-        justify-content: center; /* en móvil, texto centrado */
-        text-align: center;
+/* 🖥️ Pantallas grandes (más de 1200px) */
+@media (min-width: 1200px) {
+    body.home-page {
+        justify-content: center; 
+        background-position: left center;
+        padding-left: 0;
     }
     .data {
-        font-size: 16px;
-        padding: 15px;
-        margin: 0;
+       margin-left: 650px; 
+        margin-right: 0; /* Aseguramos que no haya margen derecho */
+        max-width: 600px;
     }
+}
+
+/* 💻 Tablets (entre 768px y 1199px) */
+@media (max-width: 1199px) and (min-width: 769px) {
+    body.home-page {
+        justify-content: center; /* centra el contenido */
+        background-position: center;
+        padding: 0 5%;
+    }
+    .data {
+        margin: 0;
+        max-width: 500px;
+    }
+}
+
+/* 📱 Móviles (hasta 600px) */
+@media (max-width: 600px) {
+    body.home-page {
+        background-image: none; /* quita el gif pesado */
+        background-color: rgb(7, 7, 48);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .data {
+        margin: 0;
+        width: 90%;
+        max-width: 400px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
     .btn-contac {
+        display: block;
         width: 100%;
+        margin-top: 20px;
+        font-size: 16px;
     }
 }
 
