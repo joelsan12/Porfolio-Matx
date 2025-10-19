@@ -1,4 +1,4 @@
-/* 🌌 Estilo general */
+/*Estilo general */
 body.home-page {
     font-family: 'Courier New', Courier, monospace;
     height: 100vh;
@@ -43,7 +43,7 @@ h1 {
     50% { transform: translateY(-10px); }
 }
 
-/* 🔘 Botón */
+/* Botón */
 .btn-contac {
     text-decoration: none;
     color: white;
@@ -61,7 +61,7 @@ h1 {
     color: black;
 }
 
-/* 🖥️ Pantallas grandes (más de 1200px) */
+/* Pantallas grandes (más de 1200px) */
 @media (min-width: 1200px) {
     body.home-page {
         justify-content: center; 
@@ -75,7 +75,7 @@ h1 {
     }
 }
 
-/* 💻 Tablets (entre 768px y 1199px) */
+/* Tablets (entre 768px y 1199px) */
 @media (max-width: 1199px) and (min-width: 769px) {
     body.home-page {
         justify-content: center; /* centra el contenido */
@@ -88,7 +88,7 @@ h1 {
     }
 }
 
-/* 📱 Móviles (hasta 600px) */
+/* Móviles (hasta 600px) */
 @media (max-width: 600px) {
     body.home-page {
         background-image: none; /* quita el gif pesado */
@@ -139,7 +139,7 @@ h1 {
 /* Estilo para la sección de habilidades */
 .skills {
     max-width: 600px;
-    margin: 20px auto;
+    margin: 70px auto;
     padding: 20px;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 10px;
@@ -149,6 +149,27 @@ h1 {
 
 /* Estilo para la lista de habilidades */
 .listaflex {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Estilo para la sección de proyectos */
+.projects{
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 60px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    font-size: 18px;
+    line-height: 1.6;
+    justify-content: flex-start;
+}
+
+.nav-list {
+    
     list-style-type: none;
     padding: 0;
     display: flex;
