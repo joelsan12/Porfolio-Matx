@@ -1,44 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PORTAFOLIO</title>
+    <title>Portafolio - Joel Sancan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body class="profile-page">
-    <main>
-        <section class="perfil">
-            <h1>Perfil</h1>
-            <p>Hola, soy un desarrollador web Jr. con experiencia en HTML, CSS y JavaScript. Me especializo en crear
-                sitios web atractivos y funcionales.</p>
-            <p>Me apasiona el diseño web y siempre estoy buscando aprender nuevas tecnologías y mejorar mis habilidades.
-            </p>
+    <main class="container">
+        
+        <section class="section-box perfil">
+            <h1><span class="highlight">&lt;Perfil /&gt;</span></h1>
+            <p>Hola, soy un desarrollador web Jr. con experiencia en HTML, CSS y JavaScript. Me especializo en crear sitios web atractivos y funcionales.</p>
+            <p>Me apasiona el diseño web y siempre estoy buscando aprender nuevas tecnologías y mejorar mis habilidades.</p>
         </section>
 
-        <section class="skills">
+        <section class="section-box skills">
             <h2>Habilidades</h2>
-            <ul class="listaflex">
-                <li>HTML5</li>
-                <li>CSS3</li>
-                <li>JavaScript</li> 
-                <li>MySQL</li>
-                <li>Java</li>
+            <ul class="skills-list">
+                <li><i class="fab fa-html5"></i> HTML5</li>
+                <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                <li><i class="fab fa-js"></i> JavaScript</li> 
+                <li><i class="fas fa-database"></i> MySQL</li>
+                <li><i class="fab fa-java"></i> Java</li>
             </ul>
         </section>
 
-        <section class ="projects">
-            <h2>Proyectos</h2>
-            <ul class="nav-list">
-                <li><a href="https://github.com/joelsan12/Reserve-gestion-deport">Proyecto 1: Sistema de Agenda para un centro deportivo</a></li>
-                <li><a href="https://github.com/joelsan12/SPOTIFY-BOT-LOCAL">Proyecto 2: Bot de musica con reconocimiento de voz</a></li>
-                <li><a href="https://sufesa.com/">Proyecto 3: Pagina informativa SUFESA</a></li>
+        <section class="section-box projects">
+            <h2>Proyectos Recientes</h2>
+            <div class="projects-grid">
+                
+                <a href="https://github.com/joelsan12/Reserve-gestion-deport" class="project-card" target="_blank">
+                    <div class="card-content">
+                        <h3>Gestión Deportiva</h3>
+                        <p>Sistema de agenda y reservas para un centro deportivo.</p>
+                        <span class="link-text">Ver Código <i class="fab fa-github"></i></span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/joelsan12/SPOTIFY-BOT-LOCAL" class="project-card" target="_blank">
+                    <div class="card-content">
+                        <h3>Bot de Música</h3>
+                        <p>Bot automatizado con reconocimiento de voz local.</p>
+                        <span class="link-text">Ver Código <i class="fab fa-github"></i></span>
+                    </div>
+                </a>
+
+                <a href="https://sufesa.com/" class="project-card" target="_blank">
+                    <div class="card-content">
+                        <h3>Web SUFESA</h3>
+                        <p>Página informativa corporativa desplegada en producción.</p>
+                        <span class="link-text">Visitar Web <i class="fas fa-external-link-alt"></i></span>
+                    </div>
+                </a>
+
+            </div>
         </section>
 
     </main>
-
 </body>
-
 </html>

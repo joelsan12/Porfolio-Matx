@@ -1,177 +1,288 @@
-/*Estilo general */
-body.home-page {
-    font-family: 'Courier New', Courier, monospace;
-    height: 100vh;
+/* =========================================
+   1. VARIABLES GLOBALES Y RESET
+   ========================================= */
+:root {
+    --bg-color: #0a0a2e;       /* Azul muy oscuro */
+    --bg-overlay: rgba(10, 10, 46, 0.75); /* Capa oscura para leer sobre GIFs */
+    --glass-bg: rgba(255, 255, 255, 0.05); /* Cristal base */
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-main: #e0e0e0;
+    --accent-color: #00d4ff;   /* Cian neón */
+    --accent-glow: rgba(0, 212, 255, 0.6);
+    --gold-text: #ffd700;
+    --font-main: 'Inter', sans-serif;
+    --font-code: 'Fira Code', monospace;
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+/* =========================================
+   2. ESTILOS COMPARTIDOS (Base)
+   ========================================= */
+body {
+    font-family: var(--font-main);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-code);
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* =========================================
+   3. ESTILOS ESPECÍFICOS: HOME PAGE (Index)
+   ========================================= */
+/* =========================================
+   MODIFICACIÓN EN HOME PAGE (Index)
+   ========================================= */
+body.home-page {
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--bg-color);
     background-image: url('/img/astronau.gif');
     background-size: cover;
-    background-position: center; 
+    background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    
     display: flex;
-    justify-content: flex-end;
+    
+    /* CAMBIO CLAVE AQUÍ: */
+    /* Antes era 'center', ahora es 'flex-end' para empujar a la derecha */
+    justify-content: flex-end; 
     align-items: center;
-    padding: 0 5%;
-   
+    
+    /* Esto controla qué tan a la derecha se queda. 
+       15% le da espacio para "respirar" del borde derecho. */
+    padding-right: 15%; 
+    
+    position: relative;
 }
 
-/* 📦 Caja de contenido */
-.data {
-    color: white;
-    text-shadow: 2px 2px 4px #000000;
-    max-width: 800px;
-    width: 100%; /* Usa el 90% del ancho del viewport */
-    padding: 60px;
-    font-size: 18px;
-    background: rgba(0, 0, 0, 0.45);
-    border-radius: 12px;
-    backdrop-filter: blur(4px);
-    box-sizing: border-box; /* Asegura que el padding no rompa el width: 90% */
-    /*margin-left: 600px;
-    margin-right: 0;*/
-    margin: auto;
+/* IMPORTANTE: Mantener centrado en celulares */
+@media (max-width: 900px) {
+    body.home-page {
+        justify-content: center; /* En tablet/móvil vuelve al centro */
+        padding-right: 20px;     /* Quitamos el padding grande */
+        padding-left: 20px;
+    }
 }
 
-/* ✨ Título animado */
-h1 {
+/* Capa oscura sobre el GIF */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-overlay);
+    z-index: 1;
+}
+
+/* Contenedor central (Hero) */
+.hero-container {
+    position: relative;
+    z-index: 2; /* Encima del overlay */
+    padding: 20px;
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Tarjeta de Cristal (Hero Card) */
+.hero-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--glass-border);
+    padding: 50px;
+    border-radius: 20px;
+    text-align: left;
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.1);
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.hero-card h1 {
     font-size: 2.5rem;
-    margin-bottom: 15px;
-    animation: move-text 3s infinite ease-in-out;
 }
 
-@keyframes move-text {
-    50% { transform: translateY(-10px); }
+.intro-text {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    line-height: 1.8;
+    margin-bottom: 35px;
 }
 
-/* Botón */
-.btn-contac {
-    text-decoration: none;
-    color: white;
-    border: 1px solid white;
-    padding: 10px 25px;
-    border-radius: 5px;
-    margin-top: 25px;
+.star-text {
+    color: var(--gold-text);
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Botón de llamada a la acción */
+.cta-button {
     display: inline-block;
-    transition: 0.4s;
-    
+    padding: 12px 30px;
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    text-decoration: none;
+    font-family: var(--font-code);
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s ease;
 }
 
-.btn-contac:hover {
-    background-color: white;
-    color: black;
+.cta-button:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 20px var(--accent-glow);
 }
 
-/* Pantallas grandes (más de 1200px) */
-@media (min-width: 1200px) {
-    body.home-page {
-        justify-content: center; 
-        background-position: left center;
-        padding-left: 0;
+.cta-button .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* =========================================
+   4. ESTILOS ESPECÍFICOS: PROFILE PAGE
+   ========================================= */
+body.profile-page {
+    min-height: 100vh;
+    padding: 20px;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at 10% 20%, rgb(15, 15, 60) 0%, rgb(5, 5, 20) 90%);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+/* Cajas de secciones (Perfil, Skills, Proyectos) */
+.section-box {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Lista de Habilidades (Píldoras) */
+.skills-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.skills-list li {
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-family: var(--font-code);
+    font-size: 0.9rem;
+    transition: transform 0.3s ease, background 0.3s;
+    cursor: default;
+}
+
+.skills-list li:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    transform: translateY(-3px);
+}
+
+/* Grid de Proyectos */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.project-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.project-card h3 {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.link-text {
+    font-size: 0.9rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* =========================================
+   5. ANIMACIONES Y RESPONSIVE
+   ========================================= */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-    .data {
-       margin-left: 650px; 
-        margin-right: 0; /* Aseguramos que no haya margen derecho */
-        max-width: 600px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* Tablets (entre 768px y 1199px) */
-@media (max-width: 1199px) and (min-width: 769px) {
-    body.home-page {
-        justify-content: center; /* centra el contenido */
-        background-position: center;
-        padding: 0 5%;
-    }
-    .data {
-        margin: 0;
-        max-width: 500px;
-    }
-}
-
-/* Móviles (hasta 600px) */
+/* Móviles (menos de 600px) */
 @media (max-width: 600px) {
-    body.home-page {
-        background-image: none; /* quita el gif pesado */
-        background-color: rgb(7, 7, 48);
-        justify-content: center;
-        align-items: center;
+    /* Home */
+    .hero-card {
+        padding: 30px;
         text-align: center;
-        padding: 20px;
     }
+    .hero-card h1 { font-size: 2rem; }
+    .cta-button { display: block; width: 100%; }
 
-    .data {
-        margin: 0;
-        width: 90%;
-        max-width: 400px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    .btn-contac {
-        display: block;
-        width: 100%;
-        margin-top: 20px;
-        font-size: 16px;
-    }
-}
-
-.profile-page {
-
-    background-color: rgb(7, 7, 48);
-    color: white;
-    font-family: 'Courier New', Courier, monospace;
-    height: 100vh;
-    margin: 0;
-    
-}
-
-.perfil {
-    max-width: 600px;
-    margin: 70px auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    font-size: 18px;
-    line-height: 1.6;
-}
-/* Estilo para la sección de habilidades */
-.skills {
-    max-width: 600px;
-    margin: 70px auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    font-size: 18px;
-    line-height: 1.6; 
-}
-
-/* Estilo para la lista de habilidades */
-.listaflex {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-}
-
-/* Estilo para la sección de proyectos */
-.projects{
-    max-width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 60px;
-    background: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    font-size: 18px;
-    line-height: 1.6;
-    justify-content: flex-start;
-}
-
-.nav-list {
-    
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
+    /* Profile */
+    .section-box { padding: 25px; }
+    .projects-grid { grid-template-columns: 1fr; }
 }
