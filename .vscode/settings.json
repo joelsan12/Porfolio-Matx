@@ -1,3 +1,4 @@
 {
-    "doki.wallpaper.enabled": false
+    "doki.wallpaper.enabled": false,
+    "liveServer.settings.port": 5501
 }
